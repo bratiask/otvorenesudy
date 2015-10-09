@@ -13,6 +13,9 @@ module JusticeGovSk
 
         type = item['args'].first.underscore.split(/_/).last
         queue = "#{type.underscore}-#{sidekiq_options_hash['queue']}"
+        patch = item['args'].last[:queue]
+
+        queue = "#{patch}-#{queue}" unless patch.nil?
 
         item.merge!(queue: queue)
 

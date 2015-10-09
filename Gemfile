@@ -1,6 +1,6 @@
 source 'https://rubygems.org'
 
-gem 'rails', '3.2.11'
+gem 'rails', '3.2.22'
 
 # database
 gem 'pg'
@@ -46,7 +46,7 @@ gem 'curb', '>= 0.8.3'
 gem 'mechanize', '~> 2.5.1'
 gem 'docsplit', '~> 0.6.4'
 
-gem 'json', '1.8.0'
+gem 'json', '1.8.2'
 gem 'nokogiri'
 
 # utilities
@@ -58,7 +58,8 @@ gem 'squire', '~> 1.2.6'
 
 # background jobs
 gem 'sinatra', require: nil
-gem 'sidekiq', '~> 3.5.0'
+gem 'sidekiq', github: 'mperham/sidekiq'
+gem 'celluloid', '~> 0.17.2'
 gem 'sidekiq-limit_fetch'
 
 # authentification
@@ -86,15 +87,18 @@ group :assets do
   gem 'sass', '~> 3.4.18'
   gem 'sass-rails', '~> 3.2.3'
   gem 'coffee-rails', '~> 3.2.1'
-  gem 'uglifier', '>= 1.0.3'
   gem 'therubyracer', '~> 0.10.2'
+  gem 'uglifier', '>= 1.0.3'
 end
 
 group :development do
-  gem 'capistrano'
-  gem 'capistrano-ext'
-  gem 'rvm-capistrano', require: false
+  gem 'capistrano', '~> 3.4.0'
+  gem 'capistrano-rails', '~> 1.1'
+  gem 'capistrano-bundler'
+  gem 'capistrano-rvm'
+  gem 'capistrano3-unicorn'
   gem 'capistrano-sidekiq'
+  gem 'capistrano-git-submodule-strategy', '~> 0.1'
 end
 
 group :development, :test do
@@ -110,3 +114,5 @@ end
 group :production do
   gem 'unicorn'
 end
+
+gem 'test-unit', '~> 3.0'
